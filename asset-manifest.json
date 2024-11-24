@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/Karthicoc7075.github.io/excelToText/static/css/main.1b156e4d.css",
-    "main.js": "/Karthicoc7075.github.io/excelToText/static/js/main.6fb00f6a.js",
-    "static/js/453.329b4e33.chunk.js": "/Karthicoc7075.github.io/excelToText/static/js/453.329b4e33.chunk.js",
-    "index.html": "/Karthicoc7075.github.io/excelToText/index.html",
-    "main.1b156e4d.css.map": "/Karthicoc7075.github.io/excelToText/static/css/main.1b156e4d.css.map",
-    "main.6fb00f6a.js.map": "/Karthicoc7075.github.io/excelToText/static/js/main.6fb00f6a.js.map",
-    "453.329b4e33.chunk.js.map": "/Karthicoc7075.github.io/excelToText/static/js/453.329b4e33.chunk.js.map"
+    "main.css": "/excelToText/static/css/main.1b156e4d.css",
+    "main.js": "/excelToText/static/js/main.8208b798.js",
+    "static/js/453.329b4e33.chunk.js": "/excelToText/static/js/453.329b4e33.chunk.js",
+    "index.html": "/excelToText/index.html",
+    "main.1b156e4d.css.map": "/excelToText/static/css/main.1b156e4d.css.map",
+    "main.8208b798.js.map": "/excelToText/static/js/main.8208b798.js.map",
+    "453.329b4e33.chunk.js.map": "/excelToText/static/js/453.329b4e33.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.1b156e4d.css",
-    "static/js/main.6fb00f6a.js"
+    "static/js/main.8208b798.js"
   ]
 }
