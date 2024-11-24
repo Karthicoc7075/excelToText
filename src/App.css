@@ -1,38 +1,91 @@
-.App {
-  text-align: center;
+/* Global styles for body to center the content */
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f9; /* Light background color */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+/* The card container */
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.App{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.card {
+  width: 100%;
+  /* max-width: 400px;  Max width for the card */
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);  /* Soft shadow */
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+/* Card content styling */
+.card-content {
+  width: 100%;
+  text-align: center;
+}
+
+/* Heading styling */
+.card-content h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* File input styling */
+input[type="file"] {
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.buttons-container {
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  gap:1rem;
+  width: 100%;
+}
+
+/* Button styling */
+button {
+  background-color: #007bff;
   color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
 }
 
-.App-link {
-  color: #61dafb;
+button:hover {
+  background-color: #0056b3;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* Small screen adjustments (optional) */
+@media (max-width: 600px) {
+  .card {
+    padding: 15px;
   }
-  to {
-    transform: rotate(360deg);
+
+  .card-content h1 {
+    font-size: 20px;
+  }
+
+  button {
+    padding: 8px 16px;
   }
 }
