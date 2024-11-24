@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import * as XLSX from "xlsx";
 import { saveAs } from "file-saver";
 import "./App.css";
+import excelFileImage from "./assets/images/excelFile.png";
+import arrowImage from "./assets/images/arrow.png";
+import textFileImage from "./assets/images/textFile.svg";
+import uploadImage from './assets/images/uploadFile.png'
 
 function App() {
   const [fileData, setFileData] = useState(null);
@@ -93,12 +97,22 @@ function App() {
         <div className="card-content">
           <h1>Excel to Text File Converter</h1>
 
-          <input
+
+          <div className="images-container" >
+            <img className="image excel-img" src={excelFileImage} alt="Excel file image" />
+            <img className="image arrow-img" src={arrowImage} alt="Arrow image" />
+            <img className="image text-img" src={textFileImage} alt="Text file image" />
+          </div>
+        <div className="upload-file-container" >
+        <input
             type="file"
             accept=".xlsx, .xls"
             onChange={(e) => handleFileUpload(e)}
           />
-
+          <img className="upload-img" src={uploadImage} alt="Excel file" />
+          <h3>Drop your excel file here or Browser</h3>
+          <p>Supports: xlsx,xls</p>
+        </div>
           <div className="buttons-container">
             {fileData && (
               <button onClick={saveAsTextFile}>Save as text file</button>
