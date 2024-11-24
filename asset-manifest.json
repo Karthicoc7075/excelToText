@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/excelToText/static/css/main.1b156e4d.css",
-    "main.js": "/excelToText/static/js/main.8208b798.js",
+    "main.js": "/excelToText/static/js/main.b11522b8.js",
     "static/js/453.329b4e33.chunk.js": "/excelToText/static/js/453.329b4e33.chunk.js",
     "index.html": "/excelToText/index.html",
     "main.1b156e4d.css.map": "/excelToText/static/css/main.1b156e4d.css.map",
-    "main.8208b798.js.map": "/excelToText/static/js/main.8208b798.js.map",
+    "main.b11522b8.js.map": "/excelToText/static/js/main.b11522b8.js.map",
     "453.329b4e33.chunk.js.map": "/excelToText/static/js/453.329b4e33.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.1b156e4d.css",
-    "static/js/main.8208b798.js"
+    "static/js/main.b11522b8.js"
   ]
 }
