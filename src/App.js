@@ -95,7 +95,7 @@ function App() {
 
           <input
             type="file"
-            accept=".xlsx, .xls, .numbers"
+            accept=".xlsx, .xls"
             onChange={(e) => handleFileUpload(e)}
           />
 
