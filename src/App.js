@@ -9,22 +9,22 @@ import uploadImage from './assets/images/uploadFile.png'
 import closeImage from './assets/images/close.png'
 
 function App() {
- const [file, setFile] = useState(null);
+  const [file, setFile] = useState(null);
   const [fileData, setFileData] = useState(null);
   const [totalCount, setTotalCount] = useState(0);
   const [successCount, setSuccessCount] = useState(0);
   const [totalAmount, setTotalAmount] = useState(0);
 
-  const handleFileUpload  = (e) => {
+  const handleFileUpload = (e) => {
     const selectedFile = e.target.files[0];
-  
+
     if (!selectedFile) return alert("No file selected");
 
     setFile(selectedFile);
-    
+
     const reader = new FileReader();
 
-    
+
     reader.onload = (event) => {
       const data = new Uint8Array(event.target.result);
       const workbook = XLSX.read(data, { type: "array" });
@@ -44,9 +44,19 @@ function App() {
 
         totalDataCount = totalDataCount + 1;
 
-        if (row.every((cell) => cell === null || cell === "")) {
+        const isOnlyColumn5NonEmpty = row.every((cell, index) => {
+          if (index === 5) {
+
+            return cell != null && cell !== "";
+          }
+
+          return cell == null || cell === "";
+        });
+
+        if (isOnlyColumn5NonEmpty) {
           break;
         }
+
 
         if (row[5] == null || row[5] === "") {
           continue;
@@ -56,15 +66,29 @@ function App() {
         totalSheetAmount = totalSheetAmount + row[5];
 
         filteredData.push(
-          ["N,", row[9], row[5], row[6], ",,,,,,,", row[1], ",,,,,,,", excelDateToJSDate(row[2]), "", row[10], row[7], row[8], row[11]].join(",")
+          ["N,",
+            row[9] ,
+            row[5],
+            row[6]?.trim("")  ,
+            ",,,,,,,",
+            row[1]?.trim(""),
+            ",,,,,,,",
+            excelDateToJSDate(row[2]),
+            "", row[10]?.trim(""),
+            row[7]?.trim(""),
+            row[8]?.trim(""),
+            row[11]?.trim("")]
+            .join(",")
         );
+        filteredData.push("\n");
       }
-
       setTotalCount(totalDataCount - 1);
       setSuccessCount(totalSuccessCount);
-      setTotalAmount(totalSheetAmount / 2);
+      setTotalAmount(totalSheetAmount);
       setFileData(filteredData);
     };
+
+    
 
     reader.readAsArrayBuffer(selectedFile);
   };
@@ -78,23 +102,33 @@ function App() {
     return `${day}/${month}/${year}`;
   }
 
+  console.log(fileData);
+  
   const saveAsTextFile = () => {
     if (!fileData) return alert("No data to save");
 
+    const currentDate  = new Date()
+    const Day = currentDate.getDate()
+    const Month = currentDate.getMonth() +1
+    
+    console.log(`Plato SCX ${Day}${Month}.2.txt`);
+    
     const isTrue = window.confirm(
       "Total sheet data count: " +
-        totalCount +
-        "\nTotal success data count:" +
-        successCount +
-        "\nTotal Amount: " +
-        totalAmount +
-        "\n\nDo you want to save this data ?"
+      totalCount +
+      "\nTotal success data count:" +
+      successCount +
+      "\nTotal Amount: " +
+      totalAmount.toFixed(2) +
+      "\n\nDo you want to save this data ?"
     );
 
+    
+
     if (isTrue) {
-      const textData = fileData.join("\n");
+      const textData = fileData.join("");
       const blob = new Blob([textData], { type: "text/plain;charset=utf-8" });
-      saveAs(blob, "filtered_data.txt");
+      saveAs(blob, `Plato SCX ${Day}${Month}.2.txt`);
       alert("File downloaded successfully");
     }
   };
@@ -121,7 +155,7 @@ function App() {
           </div>
           {
             !file ? <div className="upload-file-container" >
-            <input
+              <input
                 type="file"
                 accept=".xlsx, .xls"
                 onChange={(e) => handleFileUpload(e)}
@@ -130,18 +164,19 @@ function App() {
               <h3>Drop your excel file here or Browser</h3>
               <p>Supports: xlsx,xls</p>
             </div> :
-            <div className="file-info" >
-            <h3>{file.name}</h3>
-            <p>{(file.size / 1024).toFixed(2)} KB</p>
-            <img className="icon close" src={closeImage} alt="Close" onClick={handelFileClose} />
-          </div>
+              <div className="file-info" >
+                <h3>{file.name}</h3>
+                <p>{(file.size / 1024).toFixed(2)} KB</p>
+                <img className="icon close" src={closeImage} alt="Close" onClick={handelFileClose} />
+              </div>
           }
-        
+
           <div className="buttons-container">
             {fileData && (
               <button onClick={saveAsTextFile}>Save as text file</button>
             )}
           </div>
+
         </div>
       </div>
     </div>
