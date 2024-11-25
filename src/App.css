@@ -94,6 +94,31 @@ img{
 }
 
 
+.file-info{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+  padding: 0 1rem;
+  background-color: #b6e8ff;
+  border-radius: .6rem;
+}
+
+
+.icon{
+  width: 24px;
+  height: 24px;
+  padding: 7px;
+  border-radius: 50%;
+  transition: background 0.3s;
+}
+
+.icon:hover{
+  background: #ffffff84;
+  box-shadow: 0px 0px 5px 0px #00000084;
+  cursor: pointer;
+}
 input[type="file"] {
   position: absolute;
   left: 50%;

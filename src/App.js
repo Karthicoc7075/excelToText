@@ -6,18 +6,25 @@ import excelFileImage from "./assets/images/excelFile.png";
 import arrowImage from "./assets/images/arrow.png";
 import textFileImage from "./assets/images/textFile.svg";
 import uploadImage from './assets/images/uploadFile.png'
+import closeImage from './assets/images/close.png'
 
 function App() {
+ const [file, setFile] = useState(null);
   const [fileData, setFileData] = useState(null);
   const [totalCount, setTotalCount] = useState(0);
   const [successCount, setSuccessCount] = useState(0);
   const [totalAmount, setTotalAmount] = useState(0);
 
   const handleFileUpload  = (e) => {
-    const file = e.target.files[0];
-    if (!file) return alert("No file selected");
+    const selectedFile = e.target.files[0];
+  
+    if (!selectedFile) return alert("No file selected");
 
+    setFile(selectedFile);
+    
     const reader = new FileReader();
+
+    
     reader.onload = (event) => {
       const data = new Uint8Array(event.target.result);
       const workbook = XLSX.read(data, { type: "array" });
@@ -59,7 +66,7 @@ function App() {
       setFileData(filteredData);
     };
 
-    reader.readAsArrayBuffer(file);
+    reader.readAsArrayBuffer(selectedFile);
   };
 
   function excelDateToJSDate(serial) {
@@ -80,7 +87,8 @@ function App() {
         "\nTotal success data count:" +
         successCount +
         "\nTotal Amount: " +
-        totalAmount
+        totalAmount +
+        "\n\nDo you want to save this data ?"
     );
 
     if (isTrue) {
@@ -90,6 +98,14 @@ function App() {
       alert("File downloaded successfully");
     }
   };
+
+  const handelFileClose = () => {
+    setFile(null);
+    setFileData(null);
+    setTotalCount(0);
+    setSuccessCount(0);
+    setTotalAmount(0);
+  }
 
   return (
     <div className="App">
@@ -103,16 +119,24 @@ function App() {
             <img className="image arrow-img" src={arrowImage} alt="Arrow image" />
             <img className="image text-img" src={textFileImage} alt="Text file image" />
           </div>
-        <div className="upload-file-container" >
-        <input
-            type="file"
-            accept=".xlsx, .xls"
-            onChange={(e) => handleFileUpload(e)}
-          />
-          <img className="upload-img" src={uploadImage} alt="Excel file" />
-          <h3>Drop your excel file here or Browser</h3>
-          <p>Supports: xlsx,xls</p>
-        </div>
+          {
+            !file ? <div className="upload-file-container" >
+            <input
+                type="file"
+                accept=".xlsx, .xls"
+                onChange={(e) => handleFileUpload(e)}
+              />
+              <img className="upload-img" src={uploadImage} alt="Excel file" />
+              <h3>Drop your excel file here or Browser</h3>
+              <p>Supports: xlsx,xls</p>
+            </div> :
+            <div className="file-info" >
+            <h3>{file.name}</h3>
+            <p>{(file.size / 1024).toFixed(2)} KB</p>
+            <img className="icon close" src={closeImage} alt="Close" onClick={handelFileClose} />
+          </div>
+          }
+        
           <div className="buttons-container">
             {fileData && (
               <button onClick={saveAsTextFile}>Save as text file</button>
