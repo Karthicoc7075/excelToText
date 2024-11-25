@@ -1,18 +1,19 @@
 {
   "files": {
-    "main.css": "/excelToText/static/css/main.7928fc3c.css",
-    "main.js": "/excelToText/static/js/main.db5c8de7.js",
+    "main.css": "/excelToText/static/css/main.b4f11c86.css",
+    "main.js": "/excelToText/static/js/main.179ac9ce.js",
     "static/js/453.329b4e33.chunk.js": "/excelToText/static/js/453.329b4e33.chunk.js",
     "static/media/arrow.png": "/excelToText/static/media/arrow.fc8895455a8189ec773d.png",
     "static/media/uploadFile.png": "/excelToText/static/media/uploadFile.5616fd97526b19f62946.png",
+    "static/media/close.png": "/excelToText/static/media/close.b115993e5c58f31aaca6.png",
     "static/media/textFile.svg": "/excelToText/static/media/textFile.5d1ed70cbf2eb1b0b2d8d100cc9553d0.svg",
     "index.html": "/excelToText/index.html",
-    "main.7928fc3c.css.map": "/excelToText/static/css/main.7928fc3c.css.map",
-    "main.db5c8de7.js.map": "/excelToText/static/js/main.db5c8de7.js.map",
+    "main.b4f11c86.css.map": "/excelToText/static/css/main.b4f11c86.css.map",
+    "main.179ac9ce.js.map": "/excelToText/static/js/main.179ac9ce.js.map",
     "453.329b4e33.chunk.js.map": "/excelToText/static/js/453.329b4e33.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7928fc3c.css",
-    "static/js/main.db5c8de7.js"
+    "static/css/main.b4f11c86.css",
+    "static/js/main.179ac9ce.js"
   ]
 }
